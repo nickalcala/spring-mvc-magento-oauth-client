@@ -5,24 +5,33 @@ import com.github.scribejava.core.model.OAuth1RequestToken;
 
 public class MagentoApi extends DefaultApi10a {
 
-    private static final String BASE_URL = "http://magento.dev/";
-    private static final String AUTHORIZE_URL = "http://magento.dev/oauth/oauth_authorize?oauth_token=";
-    private static final String REQUEST_TOKEN_ENDPOINT = "http://magento.dev/oauth/token/request";
-    private static final String ACCESS_TOKEN_ENDPOINT = "http://magento.dev/oauth/token/access";
+    private String baseUrl;
+
+    public String getBaseUrl() {
+        return baseUrl;
+    }
+
+    public void setBaseUrl(String baseUrl) {
+        if (!baseUrl.endsWith("/")) {
+            baseUrl += "/";
+        }
+
+        this.baseUrl = baseUrl;
+    }
 
     @Override
     public String getAccessTokenEndpoint() {
-        return ACCESS_TOKEN_ENDPOINT;
+        return baseUrl + "oauth/token/access";
     }
 
     @Override
     public String getRequestTokenEndpoint() {
-        return REQUEST_TOKEN_ENDPOINT;
+        return baseUrl + "oauth/token/request";
     }
 
     @Override
     public String getAuthorizationUrl(OAuth1RequestToken requestToken) {
-        return String.format(AUTHORIZE_URL, requestToken.getToken());
+        return String.format(baseUrl + "oauth/oauth_authorize?oauth_token=", requestToken.getToken());
     }
 
     public static MagentoApi instance() {
