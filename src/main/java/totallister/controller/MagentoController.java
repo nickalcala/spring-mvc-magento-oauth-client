@@ -31,6 +31,7 @@ public class MagentoController {
             accessToken = service.getAccessToken(requestToken, request.getParameter("verifier"));
 
             return new MagentoCredentials(
+                    request.getParameter("store_base_url"),
                     request.getParameter("consumer_key"),
                     request.getParameter("consumer_secret"),
                     requestToken.getToken(),

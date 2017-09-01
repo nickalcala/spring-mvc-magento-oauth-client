@@ -2,19 +2,29 @@ package totallister.model;
 
 public class MagentoCredentials {
 
+    String storeBaseUrl;
     String consumerKey;
     String consumerSecret;
     String requestToken;
     String accessToken;
-
+    
     public MagentoCredentials() {
     }
 
-    public MagentoCredentials(String consumerKey, String consumerSecret, String requestToken, String accessToken) {
+    public MagentoCredentials(String storeBaseUrl, String consumerKey, String consumerSecret, String requestToken, String accessToken) {
+        this.storeBaseUrl = storeBaseUrl;
         this.consumerKey = consumerKey;
         this.consumerSecret = consumerSecret;
         this.requestToken = requestToken;
         this.accessToken = accessToken;
+    }
+
+    public String getStoreBaseUrl() {
+        return storeBaseUrl;
+    }
+
+    public void setStoreBaseUrl(String storeBaseUrl) {
+        this.storeBaseUrl = storeBaseUrl;
     }
 
     public String getConsumerKey() {
@@ -48,4 +58,5 @@ public class MagentoCredentials {
     public void setAccessToken(String accessToken) {
         this.accessToken = accessToken;
     }
+
 }
