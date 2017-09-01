@@ -16,7 +16,7 @@ public class MagentoController {
     public MagentoCredentials getRequestToken(HttpServletRequest request) {
 
         MagentoApi api = MagentoApi.instance();
-        api.setBaseUrl(request.getParameter("shop_base_url"));
+        api.setBaseUrl(request.getParameter("store_base_url"));
 
         OAuth10aService service = new ServiceBuilder(request.getParameter("consumer_key"))
                 .apiSecret(request.getParameter("consumer_secret"))
